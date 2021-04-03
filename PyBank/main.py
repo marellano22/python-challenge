@@ -39,6 +39,19 @@ with open(csv_path, newline="") as csvfile:
         net_total += int(row[1])
 
         # The average of the changes in "Profit/Losses" over the entire period
+        if (num_months == 1):
+            prev_month = next_month
+        else:
+            p_l_change = next_month - prev_month
+
+            months.append(row[0])
+
+            p_l_changes.append(p_l_change)
+
+            prev_month = next_month
+
+
+
         avg_change = sum("Profit/Losses") / len("Profit/Losses")
 
         # The greatest increase in profits (date and amount) over the entire period
